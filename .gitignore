@@ -28,3 +28,10 @@ htmlcov/
 *.log
 *.sqlite3
 *.db
+.env
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env.local
+faltu.py
