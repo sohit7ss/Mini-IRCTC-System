@@ -8,14 +8,24 @@ from sqlalchemy.engine import URL
 
 
 
+# SQLALCHEMY_DATABASE_URL = URL.create(
+#     drivername="postgresql",
+#     username=settings.database_username,
+#     password=settings.database_password,
+#     host=settings.database_hostname,
+#     port=int(settings.database_port),
+#     database=settings.database_name,
+# )
 SQLALCHEMY_DATABASE_URL = URL.create(
-    drivername="postgresql",
+    drivername="postgresql+psycopg2",
     username=settings.database_username,
     password=settings.database_password,
     host=settings.database_hostname,
-    port=int(settings.database_port),
+    port=settings.database_port,
     database=settings.database_name,
+    query={"sslmode": "require", "channel_binding": "require"},
 )
+
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
